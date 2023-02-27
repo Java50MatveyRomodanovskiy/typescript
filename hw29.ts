@@ -5,16 +5,13 @@ const alfabet: string[] = ("abcdefghijklmnopqrstuvwxyz").split("");
 // And if it finds a match, it changes the symbol by shifting it to the right by the set amount.
 function shiftRound(str: string, shift: number = 1): string {
      let ar: string[] = str.split("");
-     shift = shift <= alfabet.length ? shift : shift % alfabet.length;
+     shift = Math.abs(shift) <= alfabet.length ? shift : shift % alfabet.length;
      const res = ar.map(e => shiftMapper(e, shift));
      return res.join("");
 }
 // The same as shiftRound, but if it finds a match, it changes the symbol by shifting it to the left by the set amount.
 function unShiftRound(str: string, shift: number = 1): string {
-     let ar: string[] = str.split("");
-     shift = shift <= alfabet.length ? shift : shift % alfabet.length;
-     const res = ar.map(e => shiftMapper(e, - shift));
-     return res.join("");
+     return shiftRound(str, -shift);
 }
 
 //A helper function that checks if a character matches the control string and replaces it with the shift value.
@@ -27,8 +24,7 @@ function shiftMapper(element: string, shift: number) {
           } else {
                     element = alfabet[alfabet.length + newIndex];
                }
-          }
-     
+          }    
      return element;
 }
 console.log(shiftRound("AaBgtz", 261));
