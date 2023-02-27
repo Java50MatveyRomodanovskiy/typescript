@@ -7,7 +7,6 @@ function shiftRound(str, shift) {
     if (shift === void 0) { shift = 1; }
     var ar = str.split("");
     shift = shift <= alfabet.length ? shift : shift % alfabet.length;
-    if (shift > alfabet.length) { }
     var res = ar.map(function (e) { return shiftMapper(e, shift); });
     return res.join("");
 }

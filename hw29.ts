@@ -6,7 +6,6 @@ const alfabet: string[] = ("abcdefghijklmnopqrstuvwxyz").split("");
 function shiftRound(str: string, shift: number = 1): string {
      let ar: string[] = str.split("");
      shift = shift <= alfabet.length ? shift : shift % alfabet.length;
-     if (shift > alfabet.length) { }
      const res = ar.map(e => shiftMapper(e, shift));
      return res.join("");
 }
