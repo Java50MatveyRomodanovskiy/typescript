@@ -22,16 +22,12 @@ function unShiftRound(str, shift) {
 function shiftMapper(element, shift) {
     if (alfabet.indexOf(element) >= 0) {
         var newIndex = alfabet.indexOf(element) + shift;
-        if (newIndex >= 0 && newIndex < alfabet.length) {
+        if (newIndex >= 0) {
+            newIndex = newIndex % alfabet.length;
             element = alfabet[newIndex];
         }
         else {
-            if (newIndex >= 0) {
-                element = alfabet[newIndex - alfabet.length];
-            }
-            else {
-                element = alfabet[alfabet.length + newIndex];
-            }
+            element = alfabet[alfabet.length + newIndex];
         }
     }
     return element;
